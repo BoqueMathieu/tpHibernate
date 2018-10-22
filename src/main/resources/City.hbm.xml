@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<!-- Mapping de classe City -->
+	<class name="com.nsis.bo.City" table="city">
+<!-- Attributs -->
+		<id name="idCity" column="id_city">
+			<generator class="increment" />
+		</id>
+
+		<property name="name" column="name" />
+		<property name="mayor" column="mayor" />
+		<property name="inHabitants" column="inhabitants" />
+		<property name="postalCode" column="postalcode" />
+		<!-- Jointure -->
+		<set name="personnes" table="person" inverse="true">
+			<key column="id_city" />
+			<one-to-many class="com.nsis.bo.Person" />
+		</set>
+	</class>
+
+</hibernate-mapping>
